@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body
+{
+   background-image: url("assets/pictures/WallpaperGram.IR_1561885686_z20240.jpg");
+   background-attachment: fixed;
+   background-size: cover;
+}
