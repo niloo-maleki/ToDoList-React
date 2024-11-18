@@ -15,12 +15,12 @@ interface ITaskProps {
 const Task = (props: ITaskProps) => {
     const { id, text, isDone, isEditing, toggleDone, deleteTask, toggleButton, index } = props;
 
-    const inputRef = useRef<HTMLInputElement>(null);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
-        if (isEditing && inputRef.current) {
+        if (isEditing && textareaRef.current) {
             console.log('isEditing', isEditing)
-            inputRef.current.focus();
+            textareaRef.current.focus();
         }
         return
     }, [isEditing]);
@@ -39,7 +39,7 @@ const Task = (props: ITaskProps) => {
         {
             label: isEditing ? "Save" : "Edit",
             onClick: () => {
-                const newText = isEditing && inputRef.current ? inputRef.current.value : undefined;
+                const newText = isEditing && textareaRef.current ? textareaRef.current.value : undefined;
 
                 toggleButton(id, newText);
             },
@@ -48,19 +48,18 @@ const Task = (props: ITaskProps) => {
     ];
 
     return (
-        <div className="flex w-full items-center justify-between p-4 bg-purple-100 rounded-lg shadow-md border">
+        <div className="flex w-full overflow-y-auto items-center justify-between gap-4 p-4 bg-purple-100 rounded-lg shadow-md border">
             {isEditing ? (
-                <input
-                    type="text"
-                    ref={inputRef}
+                <textarea
+                    ref={textareaRef}
                     defaultValue={text}
-                    className="p-4 border rounded-md w-full mr-3 focus:ring-fuchsia-500 focus:border-fuchsia-500"
+                    className="p-4 border rounded-md w-full focus:ring-fuchsia-500 focus:border-fuchsia-500"
                 />
             ) : (
-                <div className="flex items-center gap-1">
+                <div className="flex gap-1 max-h-16">
                     <span className="font-bold text-purple-600">{index}.</span>
                     <span
-                        className={`"flex items-center gap-1" ${isDone ? "line-through text-gray-400" : ""}`}
+                            className={`"flex items-center break-all gap-1" ${isDone ? "line-through text-gray-400" : ""}`}
                     >
                         {text}
                     </span>
