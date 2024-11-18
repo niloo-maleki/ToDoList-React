@@ -54,7 +54,7 @@ const Task = (props: ITaskProps) => {
                     type="text"
                     ref={inputRef}
                     defaultValue={text}
-                    className="p-4 border rounded-md w-full mr-3"
+                    className="p-4 border rounded-md w-full mr-3 focus:ring-fuchsia-500 focus:border-fuchsia-500"
                 />
             ) : (
                 <div className="flex items-center gap-1">
