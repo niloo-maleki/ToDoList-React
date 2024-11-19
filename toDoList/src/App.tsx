@@ -1,13 +1,6 @@
 
 import TaskCard from "./components/TaskCard";
 
-const App = () => {
-
-  return (
-    <div>
-      <TaskCard />
-    </div>
-  );
-};
+const App = () => <TaskCard />;
 
 export default App;
